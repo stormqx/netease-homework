@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>netease todo</title>
+  <!-- @STYLE -->
+  <link type="text/css" rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+  <div class="todo-app">
+    <haeder class="header">
+      <h1>todos</h1>
+      <input
+        id="new-todo"
+        placeholder="What needs to be done?"
+        autofocus="autofocus"
+      />
+    </haeder>
+    <section class="main">
+				<input class="toggle-all" type="checkbox" id="toggle-all">
+				<ul class="todo-list" id="todos"></ul>
+		</section>
+		<div id="footer"></div>
+	</div>
+	
+	<textarea name="jst" id="todo-list" style="display:none;">
+		{list todoList as item}
+		<li class="todo {if item.completed}completed{/if}" data-id="${item.id}">
+			<div class="view">
+				<input class="toggle" type="checkbox" {if item.completed}checked{/if}>
+				<label>${item.title}</label>
+				<button class="destroy"></button>
+			</div>
+			<input class="edit" value="${item.name}">
+		</li>
+		{/list}
+	</textarea>
+
+	<textarea name="jst" id="todo-footer" style="display:none;">
+			{if todoCount !== 0}
+			<footer class="footer">
+					<span class="todo-count">
+						<strong></strong> ${activeTodoCount}件待办事项
+					</span>
+					<ul class="filters" id="filters">
+						<li><a href="#/all" class="{if nowShowing=== constants.ALL_TODO}selected{/if}" data-filter="${constants.ALL_TODO}">全部</a></li>
+						<li><a href="#/active" class="{if nowShowing=== constants.ACTIVE_TODOS}selected{/if}" data-filter="${constants.ACTIVE_TODOS}">未完成</a></li>
+						<li><a href="#/completed" class="{if nowShowing=== constants.COMPLETED_TODOS}selected{/if}" data-filter="${constants.COMPLETED_TODOS}">已完成</a></li>
+					</ul>
+					{if completedTodoCount!==0}
+					<button class="clear-completed" id="clear-completed">
+						删除已完成
+					</button>
+					{/if}
+				</footer>
+			{/if}
+	</textarea>
+  
+   <!-- @SCRIPT -->
+	 <script src="js/src/define.js?pro=./js/pro/"></script>
+	 <script src="js/pro/index.js"></script>
+</body>
+</html>
