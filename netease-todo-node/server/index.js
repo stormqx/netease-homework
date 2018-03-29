@@ -6,7 +6,7 @@ const app = express();
 config(app);
 
 const port =  process.env.PORT || 3000;
-const host =  process.env.HOST || localhost;
+const host =  process.env.HOST || 'localhost';
 
 
 app.listen(port, host, (err) => {
