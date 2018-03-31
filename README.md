@@ -1,18 +1,18 @@
 # netease-todo-node
 netease homework.
 
-# Major Packages Used in this project
+## Major Packages Used in this project
 
 * NEJ
 * MongoDB
 * Express
 * fetch
 
-# Support browser
+## Support browser
 
 Chrome (support fetch, promise...)
 
-# How to Install
+## How to Install
 
 Clone the repo to your local storage, and install the dependencies using NPM
 
@@ -22,7 +22,7 @@ cd netease-todo-node
 npm install
 ```
 
-# How to Run
+## How to Run
 
 ```
 npm start
