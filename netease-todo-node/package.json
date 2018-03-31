@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +16,7 @@
     "express": "^4.16.3",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.11",
-    "morgan": "^1.9.0",
-    "regular": "^0.1.6"
+    "morgan": "^1.9.0"
   },
-  "devDependencies": {
-    "rgl-loader": "^0.4.0"
-  }
+  "devDependencies": {}
 }

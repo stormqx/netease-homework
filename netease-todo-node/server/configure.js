@@ -3,11 +3,15 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const errorHandler = require('errorhandler');
 const mongoose = require('mongoose');
+const express = require('express');
+const compression = require('compression');
 const router = require('./routes');
 const connector = require('./db/connector');
 
+module.exports = (app, options) => {
+  const publicPath = options.publicPath || '/';
+  const outputPath = options.outputPath || path.resolve(process.cwd(), 'app');
 
-module.exports = (app) => {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -21,8 +25,19 @@ module.exports = (app) => {
     next();
   });
 
+  // compression middleware compresses your server responses which makes them
+  // smaller (applies also to assets). You can read more about that technique
+  // and other good practices on official Express.js docs http://mxs.is/googmy
+  app.use(compression());
+
+  // Serving statics
+  app.use(publicPath, express.static(outputPath));
+
   // append routes to app
   router(app);
+
+  // entry point
+  app.get('*', (req, res) => res.sendFile(path.resolve(outputPath, 'index.html')));
 
   // connect db
   connector.connectDB();

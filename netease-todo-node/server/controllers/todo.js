@@ -30,7 +30,7 @@ exports.addTodo = (req, res, next) => {
   // Check for reg errors
   const { title, completed } = req.body;
 
-  // Return error if no username provided
+  // Return error if no title provided
   if (!title) {
     return res.status(422).send({ error: NEED_TITLE });
   }

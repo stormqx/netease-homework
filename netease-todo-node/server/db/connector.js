@@ -12,7 +12,6 @@ exports.connectDB = () => {
 // When successfully connected
 mongoose.connection.on('connected', () => {
   console.log(`todo db connection successful, to${connectStr}`);
-  // serverLogger.info(`${chalk.black.bgCyan(`dvone connection successful, to: ${logStr}`)}`);
 });
 
 // When the connection is disconnected
@@ -33,7 +32,6 @@ process.on('SIGTERM', () => {
 function gracefulExit() {
   mongoose.connection.close(() => {
     console.log('todo db connection disconnected through app termination')
-    // serverLogger.info(`${chalk.black.bgBlue('dvone db connection disconnected through app termination')}`);
     process.exit(0);
   });
 }
